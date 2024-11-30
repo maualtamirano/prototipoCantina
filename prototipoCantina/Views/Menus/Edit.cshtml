@@ -1,0 +1,48 @@
+﻿@model prototipoCantina.Models.Menu
+
+@{
+    ViewData["Title"] = "Editar Menú";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Editar Menú</h1>
+
+    <h4>Detalles del Menú</h4>
+    <hr />
+
+    <form asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <!-- Campo oculto para IdMenu -->
+        <input type="hidden" asp-for="IdMenu" />
+
+        <div class="form-group">
+            <label asp-for="NombreMenu" class="control-label">Nombre del Menú</label>
+            <input asp-for="NombreMenu" class="form-control" placeholder="Ingresa el nombre del menú" />
+            <span asp-validation-for="NombreMenu" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Precio" class="control-label">Precio</label>
+            <input asp-for="Precio" class="form-control" placeholder="Ingresa el precio del menú" />
+            <span asp-validation-for="Precio" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Descripcion" class="control-label">Descripción</label>
+            <textarea asp-for="Descripcion" class="form-control" rows="3" placeholder="Ingresa una descripción detallada"></textarea>
+            <span asp-validation-for="Descripcion" class="text-danger"></span>
+        </div>
+
+        <div class="form-group text-center" style="margin-top: 10px">
+            <input type="submit" value="Guardar Cambios" class="btn btn-primary" />
+            <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

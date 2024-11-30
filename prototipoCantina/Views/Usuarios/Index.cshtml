@@ -1,0 +1,53 @@
+﻿@model IEnumerable<prototipoCantina.Models.Usuario>
+
+@{
+    ViewData["Title"] = "Usuarios Registrados";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Usuarios Registrados</h1>
+
+    <p>
+        <a asp-action="Create" class="btn btn-info mb-3">
+            <i class="fa fa-plus"></i> Nuevo Usuario
+        </a>
+    </p>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Nombre)</th>
+                    <th>@Html.DisplayNameFor(model => model.Apellido)</th>
+                    <th>@Html.DisplayNameFor(model => model.Email)</th>
+                    <th>@Html.DisplayNameFor(model => model.Telefono)</th>
+                    <th>@Html.DisplayNameFor(model => model.Puesto)</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Apellido)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Telefono)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Puesto)</td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.IdUsuario" class="btn btn-warning btn-sm">
+                                <i class="fa fa-pencil-alt"></i> Editar
+                            </a> |
+                            <a asp-action="Details" asp-route-id="@item.IdUsuario" class="btn btn-light btn-sm">
+                                <i class="fa fa-eye"></i> Detalles
+                            </a> |
+                            <a asp-action="Delete" asp-route-id="@item.IdUsuario" class="btn btn-danger btn-sm">
+                                <i class="fa fa-trash"></i> Borrar
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

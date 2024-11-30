@@ -1,0 +1,43 @@
+﻿@model prototipoCantina.Models.Reserva
+
+@{
+    ViewData["Title"] = "Eliminar Reserva";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center text-danger mb-4">Eliminar Reserva</h1>
+    <div class="alert alert-warning text-center">
+        <strong>¿Estás seguro de que deseas eliminar esta reserva?</strong>
+        <p class="mb-0">Esta acción no se puede deshacer.</p>
+    </div>
+
+    <div class="card shadow mt-3">
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-5 col-md-3">Fecha de Reserva</dt>
+                <dd class="col-7 col-md-9">@Html.DisplayFor(model => model.FechaReserva)</dd>
+
+                <dt class="col-5 col-md-3">Monto Total</dt>
+                <dd class="col-7 col-md-9">@Html.DisplayFor(model => model.MontoTotal)</dd>
+
+                <dt class="col-5 col-md-3">Menú</dt>
+                <dd class="col-7 col-md-9">@Html.DisplayFor(model => model.IdMenuNavigation.NombreMenu)</dd>
+
+                <dt class="col-5 col-md-3">Usuario</dt>
+                <dd class="col-7 col-md-9">@Html.DisplayFor(model => model.IdUsuarioNavigation.Nombre)</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="mt-4 d-flex justify-content-center gap-3">
+        <form asp-action="Delete" class="d-inline">
+            <input type="hidden" asp-for="IdReserva" />
+            <button type="submit" class="btn btn-danger">
+                <i class="fa fa-trash"></i> Confirmar Eliminación
+            </button>
+        </form>
+        <a asp-action="Index" class="btn btn-outline-info">
+            <i class="fa fa-list"></i> Volver a la lista
+        </a>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+﻿@model prototipoCantina.Models.Credito
+
+@{
+    ViewData["Title"] = "Detalles del Crédito";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center text-primary mb-4">Detalles del Crédito</h1>
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Crédito Información</h4>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-4 font-weight-bold">Monto Diario Asignado:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.CreditoDiario)</dd>
+
+                <dt class="col-sm-4 font-weight-bold">Crédito Consumido:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.CreditoConsumido)</dd>
+
+                <dt class="col-sm-4 font-weight-bold">Fecha de Movimiento:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Fecha)</dd>
+
+                <dt class="col-sm-4 font-weight-bold">Usuario Asociado:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.IdUsuarioNavigation.Nombre)</dd>
+            </dl>
+        </div>
+        <div class="card-footer text-end">
+            <a asp-action="Edit" asp-route-id="@Model?.IdCredito" class="btn btn-warning">
+                <i class="bi bi-pencil"></i> Editar
+            </a>
+            <a asp-action="Index" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i> Volver a la Lista
+            </a>
+        </div>
+    </div>
+</div>

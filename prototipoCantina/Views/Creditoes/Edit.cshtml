@@ -1,0 +1,60 @@
+﻿@model prototipoCantina.Models.Credito
+
+@{
+    ViewData["Title"] = "Editar Crédito";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center text-primary mb-4">Editar Crédito</h1>
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Formulario de Edición</h4>
+        </div>
+        <div class="card-body">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                <input type="hidden" asp-for="IdCredito" />
+
+                <div class="form-group mb-3">
+                    <label asp-for="IdUsuario" class="form-label">Usuario</label>
+                    <select asp-for="IdUsuario" class="form-select" asp-items="ViewBag.IdUsuario"></select>
+                    <span asp-validation-for="IdUsuario" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="CreditoDiario" class="form-label">Crédito Diario</label>
+                    <input asp-for="CreditoDiario" class="form-control" placeholder="Ingrese el monto del crédito diario" />
+                    <span asp-validation-for="CreditoDiario" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="CreditoConsumido" class="form-label">Crédito Consumido</label>
+                    <input asp-for="CreditoConsumido" class="form-control" placeholder="Ingrese el monto consumido" />
+                    <span asp-validation-for="CreditoConsumido" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Fecha" class="form-label">Fecha</label>
+                    <input asp-for="Fecha" class="form-control" placeholder="Seleccione la fecha" />
+                    <span asp-validation-for="Fecha" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <a asp-action="Index" class="btn btn-secondary">
+                        <i class="bi bi-arrow-left"></i> Volver a la Lista
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-save"></i> Guardar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

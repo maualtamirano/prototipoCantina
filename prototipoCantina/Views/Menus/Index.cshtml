@@ -1,0 +1,64 @@
+﻿@model IEnumerable<prototipoCantina.Models.Menu>
+
+@{
+    ViewData["Title"] = "Menús Disponibles";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Menús Disponibles</h1>
+
+    <div class="text-end mb-3">
+        <a asp-action="Create" class="btn btn-info">
+            <i class="fa fa-plus-circle"></i> Nuevo Menú
+        </a>
+    </div>
+
+    <table class="table table-striped table-hover">
+        <thead class="table-dark text-center">
+            <tr>
+                <th>Nombre del Menú</th>
+                <th>Precio</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (!Model.Any())
+            {
+                <tr>
+                    <td colspan="4" class="text-center text-muted">
+                        <em>No hay menús disponibles.</em>
+                    </td>
+                </tr>
+            }
+            else
+            {
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.NombreMenu)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Precio) $</td>
+                        <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
+                        <td class="text-center">
+                            <a asp-action="Edit" asp-route-id="@item.IdMenu" class="btn btn-warning btn-sm">
+                                <i class="fa fa-pencil-square"></i> Editar
+                            </a>
+                            <a asp-action="Details" asp-route-id="@item.IdMenu" class="btn btn-light btn-sm">
+                                <i class="fa fa-eye"></i> Detalles
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@item.IdMenu" class="btn btn-danger btn-sm">
+                                <i class="fa fa-trash"></i> Borrar
+                            </a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

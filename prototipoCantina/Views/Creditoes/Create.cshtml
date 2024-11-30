@@ -1,0 +1,45 @@
+﻿@model prototipoCantina.Models.Credito
+
+@{
+    ViewData["Title"] = "Crear";
+}
+
+<h1>Crear</h1>
+
+<h4>Credito</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdUsuario" class="control-label">Usuario</label>
+                <select asp-for="IdUsuario" class ="form-control" asp-items="ViewBag.IdUsuario"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreditoDiario" class="control-label"></label>
+                <input asp-for="CreditoDiario" class="form-control" />
+                <span asp-validation-for="CreditoDiario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreditoConsumido" class="control-label"></label>
+                <input asp-for="CreditoConsumido" class="form-control" />
+                <span asp-validation-for="CreditoConsumido" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fecha" class="control-label"></label>
+                <input asp-for="Fecha" class="form-control" />
+                <span asp-validation-for="Fecha" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="margin-top: 10px">
+                <input type="submit" value="Crear" class="btn btn-success" />
+                <a asp-action="Index" class="btn btn-outline-info">Volver a la lista</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<prototipoCantina.Models.Reserva>
+
+@{
+    ViewData["Title"] = "Reservas";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Gestión de Reservas</h1>
+
+    <div class="text-end mb-3">
+        <a asp-action="Create" class="btn btn-primary">
+            <i class="fa fa-plus"></i> <span class="d-none d-sm-inline">Nueva Reserva</span>
+        </a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-hover table-striped align-middle text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.FechaReserva)</th>
+                    <th>@Html.DisplayNameFor(model => model.MontoTotal)</th>
+                    <th>Menú Reservado</th>
+                    <th>Usuario</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.FechaReserva)</td>
+                        <td>@Html.DisplayFor(modelItem => item.MontoTotal)</td>
+                        <td>@Html.DisplayFor(modelItem => item.IdMenuNavigation.NombreMenu)</td>
+                        <td>@Html.DisplayFor(modelItem => item.IdUsuarioNavigation.Nombre)</td>
+                        <td>
+                            <div class="d-flex flex-wrap gap-2 justify-content-center">
+                                <a asp-action="Edit" asp-route-id="@item.IdReserva" class="btn btn-warning btn-sm">
+                                    <i class="fa fa-edit"></i> <span class="d-none d-sm-inline">Editar</span>
+                                </a>
+                                <a asp-action="Details" asp-route-id="@item.IdReserva" class="btn btn-info btn-sm">
+                                    <i class="fa fa-info-circle"></i> <span class="d-none d-sm-inline">Detalles</span>
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@item.IdReserva" class="btn btn-danger btn-sm">
+                                    <i class="fa fa-trash"></i> <span class="d-none d-sm-inline">Cancelar</span>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

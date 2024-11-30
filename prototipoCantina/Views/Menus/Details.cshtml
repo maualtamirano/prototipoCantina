@@ -1,0 +1,32 @@
+﻿@model prototipoCantina.Models.Menu
+
+@{
+    ViewData["Title"] = "Detalles del Menú";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Detalles del Menú</h1>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h4 class="card-title text-primary">@Model.NombreMenu</h4>
+            <hr />
+            <div class="row mb-3">
+                <div class="col-sm-4 fw-bold">Precio:</div>
+                <div class="col-sm-8">$ @Html.DisplayFor(model => model.Precio)</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-4 fw-bold">Descripción:</div>
+                <div class="col-sm-8">@Html.DisplayFor(model => model.Descripcion)</div>
+            </div>
+        </div>
+        <div class="card-footer text-end">
+            <a asp-action="Edit" asp-route-id="@Model?.IdMenu" class="btn btn-warning btn-sm">
+                <i class="fa fa-pencil-square"></i> Editar
+            </a>
+            <a asp-action="Index" class="btn btn-secondary btn-sm">
+                <i class="fa fa-arrow-left"></i> Volver a la Lista
+            </a>
+        </div>
+    </div>
+</div>

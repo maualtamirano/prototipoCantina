@@ -1,0 +1,41 @@
+﻿@model prototipoCantina.Models.Menu
+
+@{
+    ViewData["Title"] = "Eliminar Menú";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center text-danger mb-4">Eliminar Menú</h1>
+
+    <div class="alert alert-warning text-center" role="alert">
+        <h5 class="fw-bold">¿Estás seguro de que deseas eliminar este menú?</h5>
+        <p class="mb-0">Esta acción no se puede deshacer.</p>
+    </div>
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <h4 class="text-primary">@Model.NombreMenu</h4>
+            <hr />
+            <div class="row mb-3">
+                <div class="col-sm-4 fw-bold">Precio:</div>
+                <div class="col-sm-8">$ @Html.DisplayFor(model => model.Precio)</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-4 fw-bold">Descripción:</div>
+                <div class="col-sm-8">@Html.DisplayFor(model => model.Descripcion)</div>
+            </div>
+        </div>
+    </div>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdMenu" />
+        <div class="d-flex justify-content-center gap-2">
+            <button type="submit" class="btn btn-danger">
+                <i class="fa fa-trash"></i> Eliminar
+            </button>
+            <a asp-action="Index" class="btn btn-secondary">
+                <i class="fa fa-arrow-left"></i> Cancelar
+            </a>
+        </div>
+    </form>
+</div>
